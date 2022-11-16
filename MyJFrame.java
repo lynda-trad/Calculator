@@ -23,24 +23,181 @@ public class MyJFrame extends JFrame
 	private JButton buttonMinus;
 	private JButton buttonTimes;
 	private JButton buttonDivide;
-	
 	private JButton buttonEqual;
 	
 	private Calculator calculator;
 	
 	public void buttonPressed(ActionEvent e)
 	{
-		if (e.getSource() == button1)
+		if (e.getSource() == buttonEqual)
 		{
-			if(this.calculator.getOperrand().length() == 0)
+			this.calculator.inputDoneToTrue();
+		}
+		else if (e.getSource() == buttonPlus)
+		{
+			if(this.calculator.getOperator().length() == 0)
 			{
-				// button1.setText("Clicked !");
+				this.calculator.setOperator("+");
+			}
+			else
+			{
+				System.out.println("You already chose " + this.calculator.getOperator() + " as your operator.");
+			}
+		}
+		else if (e.getSource() == buttonMinus)
+		{
+			if(this.calculator.getOperator().length() == 0)
+			{
+				this.calculator.setOperator("-");
+			}
+			else
+			{
+				System.out.println("You already chose " + this.calculator.getOperator() + " as your operator.");
+			}
+		}
+		else if (e.getSource() == buttonTimes)
+		{
+			if(this.calculator.getOperator().length() == 0)
+			{
+				this.calculator.setOperator("*");
+			}
+			else
+			{
+				System.out.println("You already chose " + this.calculator.getOperator() + " as your operator.");
+			}
+		}
+		else if (e.getSource() == buttonDivide)
+		{
+			if(this.calculator.getOperator().length() == 0)
+			{
+				this.calculator.setOperator("/");
+			}
+			else
+			{
+				System.out.println("You already chose " + this.calculator.getOperator() + " as your operator.");
+			}
+		}
+		
+
+		if (e.getSource() == button0)
+		{
+			if(this.calculator.getOperator().length() == 0)
+			{
+				this.calculator.concatFirstNumber("0");
+			}
+			else
+			{
+				this.calculator.concatSecondNumber("0");
+			}
+			this.calculator.printCalculation();
+		}
+		else if (e.getSource() == button1)
+		{
+			if(this.calculator.getOperator().length() == 0)
+			{
 				this.calculator.concatFirstNumber("1");
 			}
 			else
 			{
 				this.calculator.concatSecondNumber("1");
 			}
+			this.calculator.printCalculation();
+		}
+		else if (e.getSource() == button2)
+		{
+			if(this.calculator.getOperator().length() == 0)
+			{
+				this.calculator.concatFirstNumber("2");
+			}
+			else
+			{
+				this.calculator.concatSecondNumber("2");
+			}
+			this.calculator.printCalculation();
+		}
+		else if (e.getSource() == button3)
+		{
+			if(this.calculator.getOperator().length() == 0)
+			{
+				this.calculator.concatFirstNumber("3");
+			}
+			else
+			{
+				this.calculator.concatSecondNumber("3");
+			}
+			this.calculator.printCalculation();
+		}
+		else if (e.getSource() == button4)
+		{
+			if(this.calculator.getOperator().length() == 0)
+			{
+				this.calculator.concatFirstNumber("4");
+			}
+			else
+			{
+				this.calculator.concatSecondNumber("4");
+			}
+			this.calculator.printCalculation();
+		}
+		else if (e.getSource() == button5)
+		{
+			if(this.calculator.getOperator().length() == 0)
+			{
+				this.calculator.concatFirstNumber("5");
+			}
+			else
+			{
+				this.calculator.concatSecondNumber("5");
+			}
+			this.calculator.printCalculation();
+		}
+		else if (e.getSource() == button6)
+		{
+			if(this.calculator.getOperator().length() == 0)
+			{
+				this.calculator.concatFirstNumber("6");
+			}
+			else
+			{
+				this.calculator.concatSecondNumber("6");
+			}
+			this.calculator.printCalculation();
+		}
+		else if (e.getSource() == button7)
+		{
+			if(this.calculator.getOperator().length() == 0)
+			{
+				this.calculator.concatFirstNumber("7");
+			}
+			else
+			{
+				this.calculator.concatSecondNumber("7");
+			}
+			this.calculator.printCalculation();
+		}
+		else if (e.getSource() == button8)
+		{
+			if(this.calculator.getOperator().length() == 0)
+			{
+				this.calculator.concatFirstNumber("8");
+			}
+			else
+			{
+				this.calculator.concatSecondNumber("8");
+			}
+			this.calculator.printCalculation();
+		}
+		else if (e.getSource() == button9)
+		{
+			if(this.calculator.getOperator().length() == 0)
+			{
+				this.calculator.concatFirstNumber("9");
+			}
+			else
+			{
+				this.calculator.concatSecondNumber("9");
+			}
+			this.calculator.printCalculation();
 		}
 	}
 	
@@ -98,6 +255,7 @@ public class MyJFrame extends JFrame
 		panel.add(buttonMinus);
 		panel.add(buttonTimes);
 		panel.add(buttonDivide);
+		panel.add(buttonEqual);
 	}
 	
 	public MyJFrame(Calculator c)
