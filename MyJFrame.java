@@ -25,7 +25,6 @@ public class MyJFrame extends JFrame
 	private JButton buttonTimes;
 	private JButton buttonDivide;
 	private JButton buttonEqual;
-	
 	private JButton buttonClear;
 	
 	private Calculator calculator;
@@ -220,6 +219,8 @@ public class MyJFrame extends JFrame
 		this.buttonDivide = new JButton ("/");
 		this.buttonEqual = new JButton ("=");
 		
+		this.buttonClear = new JButton ("CLEAR");
+		
 		button0.addActionListener(listener);
 		button1.addActionListener(listener);
 		button2.addActionListener(listener);
@@ -236,6 +237,7 @@ public class MyJFrame extends JFrame
 		buttonTimes.addActionListener(listener);
 		buttonDivide.addActionListener(listener);
 		buttonEqual.addActionListener(listener);
+		buttonClear.addActionListener(listener);
 	}
 	
 	private void addButtonsToPanel(JPanel panel)
@@ -256,6 +258,8 @@ public class MyJFrame extends JFrame
 		panel.add(buttonTimes);
 		panel.add(buttonDivide);
 		panel.add(buttonEqual);
+		
+		panel.add(buttonClear);
 	}
 	
 	public MyJFrame(Calculator c)
