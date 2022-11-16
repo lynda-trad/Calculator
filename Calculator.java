@@ -7,7 +7,7 @@ public class Calculator
 	private String firstNumber;
 	private String secondNumber;
 	
-	private String operand;
+	private String operator;
 	
 	private boolean inputDone;
 	
@@ -15,18 +15,18 @@ public class Calculator
 	{
 		this.firstNumber = "";
 		this.secondNumber = "";
-		this.operand = "";
+		this.operator = "";
 		this.inputDone = false;
 	}
 
-	public void setOperrand(String o)
+	public void setOperator(String o)
 	{
-		this.operand = o;
+		this.operator = o;
 	}
 	
-	public String getOperrand()
+	public String getOperator()
 	{
-		return this.operand;
+		return this.operator;
 	}
 	
 	public void concatFirstNumber(String n)
@@ -46,7 +46,7 @@ public class Calculator
 	
 	public void printCalculation()
 	{
-		System.out.println(this.firstNumber + " " + this.operand + " " + this.secondNumber);
+		System.out.println(this.firstNumber + " " + this.operator + " " + this.secondNumber);
 	}
 	
 	public static void main(String []args) throws InterruptedException
@@ -60,7 +60,7 @@ public class Calculator
 			// wait for input
 		}
 		
-		switch(c.operand)
+		switch(c.operator)
 		{
 			case "+":
 				result = Integer.parseInt(c.firstNumber) + Integer.parseInt(c.secondNumber);
