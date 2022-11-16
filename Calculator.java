@@ -7,7 +7,7 @@ public class Calculator
 	private String firstNumber;
 	private String secondNumber;
 	
-	private String opperand;
+	private String operand;
 	
 	private boolean inputDone;
 	
@@ -15,13 +15,13 @@ public class Calculator
 	{
 		this.firstNumber = "";
 		this.secondNumber = "";
-		this.opperand = "";
+		this.operand = "";
 		this.inputDone = false;
 	}
 	
 	public String getOperrand()
 	{
-		return this.opperand;
+		return this.operand;
 	}
 	
 	public void concatFirstNumber(String n)
@@ -39,16 +39,39 @@ public class Calculator
 		this.inputDone = true;
 	}
 	
+	public void printCalculation()
+	{
+		System.out.println(this.firstNumber + " " + this.operand + " " + this.secondNumber);
+	}
+	
 	public static void main(String []args) throws InterruptedException
 	{
 		Calculator c = new Calculator();
 		JFrame frame = new MyJFrame(c);
+		int result = 0;
 		
 		while(!c.inputDone)
 		{
 			// wait for input
 		}
-		// inputDone -> True bc = button was pressed
-		// Do the calculation
+		
+		switch(c.operand)
+		{
+			case "+":
+				result = Integer.parseInt(c.firstNumber) + Integer.parseInt(c.secondNumber);
+				System.out.println(c.firstNumber + " + " + c.secondNumber + " = " + result);
+			case "-":
+				result = Integer.parseInt(c.firstNumber) - Integer.parseInt(c.secondNumber);
+				System.out.println(c.firstNumber + " - " + c.secondNumber + " = " + result);
+			case "*":
+				result = Integer.parseInt(c.firstNumber) * Integer.parseInt(c.secondNumber);
+				System.out.println(c.firstNumber + " * " + c.secondNumber + " = " + result);
+			case "/":
+				result = Integer.parseInt(c.firstNumber) / Integer.parseInt(c.secondNumber);
+				System.out.println(c.firstNumber + " / " + c.secondNumber + " = " + result);
+			default:
+				System.exit(0);
+		}
+		System.exit(0);
 	}
 }
