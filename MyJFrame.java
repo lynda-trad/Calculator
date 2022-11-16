@@ -4,6 +4,7 @@ import java.awt.event.ActionEvent;
 
 import javax.swing.JButton;
 import javax.swing.JFrame;
+import javax.swing.JLabel;
 import javax.swing.JPanel;
 
 public class MyJFrame extends JFrame
@@ -26,7 +27,8 @@ public class MyJFrame extends JFrame
 	private JButton buttonEqual;
 	
 	private Calculator calculator;
-	
+	private JLabel calculation;
+
 	public void buttonPressed(ActionEvent e)
 	{
 		if (e.getSource() == buttonEqual)
@@ -270,13 +272,15 @@ public class MyJFrame extends JFrame
 	
 		MyListener listener = new MyListener(this);
 		
-		JPanel panel= new JPanel();
+		JPanel buttonsPanel = new JPanel();
 		
 		this.initButtons(listener);
 		
-		this.addButtonsToPanel(panel);
-		
-		this.add(panel);
+		this.addButtonsToPanel(buttonsPanel);
+
+		this.calculation = new JLabel("Click on the buttons to start calculating !");
+		this.add(calculation);
+		this.add(buttonsPanel);
 		this.setVisible(true);
 	}
 }
