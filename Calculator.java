@@ -18,6 +18,11 @@ public class Calculator
 		this.operand = "";
 		this.inputDone = false;
 	}
+
+	public void setOperrand(String o)
+	{
+		this.operand = o;
+	}
 	
 	public String getOperrand()
 	{
