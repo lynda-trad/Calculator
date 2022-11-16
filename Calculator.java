@@ -65,35 +65,36 @@ public class Calculator
 	public static void main(String []args) throws InterruptedException
 	{
 		Calculator c = new Calculator();
-		JFrame frame = new MyJFrame(c);
+		MyJFrame frame = new MyJFrame(c);
 		int result = 0;
 		while(true)
 		{
 			while(!c.inputDone)
 			{
 				// wait for complete input
+				System.out.println();
 			}
-			
+						
 			switch(c.operator)
 			{
 				case "+":
 					result = Integer.parseInt(c.firstNumber) + Integer.parseInt(c.secondNumber);
-					System.out.println(c.firstNumber + " + " + c.secondNumber + " = " + result);
+					frame.printResult(c.firstNumber + " + " + c.secondNumber + " = " + Integer.toString(result));
 					break;
 				case "-":
 					result = Integer.parseInt(c.firstNumber) - Integer.parseInt(c.secondNumber);
-					System.out.println(c.firstNumber + " - " + c.secondNumber + " = " + result);
+					frame.printResult(c.firstNumber + " - " + c.secondNumber + " = " + Integer.toString(result));
 					break;
 				case "*":
 					result = Integer.parseInt(c.firstNumber) * Integer.parseInt(c.secondNumber);
-					System.out.println(c.firstNumber + " * " + c.secondNumber + " = " + result);
+					frame.printResult(c.firstNumber + " * " + c.secondNumber + " = " + Integer.toString(result));
 					break;
 				case "/":
 					result = Integer.parseInt(c.firstNumber) / Integer.parseInt(c.secondNumber);
-					System.out.println(c.firstNumber + " / " + c.secondNumber + " = " + result);
+					frame.printResult(c.firstNumber + " / " + c.secondNumber + " = " + Integer.toString(result));
 					break;
 				default:
-					System.exit(0);
+					break;
 			}
 		}
 	}

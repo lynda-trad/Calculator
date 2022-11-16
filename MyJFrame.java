@@ -1,5 +1,6 @@
 package calculator;
 
+import java.awt.BorderLayout;
 import java.awt.event.ActionEvent;
 
 import javax.swing.JButton;
@@ -262,13 +263,17 @@ public class MyJFrame extends JFrame
 		panel.add(buttonClear);
 	}
 	
+	public void printResult(String result)
+	{
+		this.calculation.setText(result);
+	}
 	public MyJFrame(Calculator c)
 	{
 		this.calculator = c;
 		this.setTitle("~ Calculator ~");
 		this.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		this.setLocation(0, 0);
-		this.setLocationRelativeTo(null); /*centers the frame*/
+		this.setLocationRelativeTo(null);
 		this.setSize(465, 485);
 		this.setResizable(false);
 	
@@ -279,10 +284,12 @@ public class MyJFrame extends JFrame
 		this.initButtons(listener);
 		
 		this.addButtonsToPanel(buttonsPanel);
-
+		
 		this.calculation = new JLabel("Click on the buttons to start calculating !");
-		buttonsPanel.add(calculation);
-		this.add(buttonsPanel);
+		buttonsPanel.add(calculation, BorderLayout.SOUTH);
+		
+		this.add(buttonsPanel, BorderLayout.CENTER);
+
 		this.setVisible(true);
 	}
 }
