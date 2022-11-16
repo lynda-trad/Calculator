@@ -26,11 +26,18 @@ public class MyJFrame extends JFrame
 	private JButton buttonDivide;
 	private JButton buttonEqual;
 	
+	private JButton buttonClear;
+	
 	private Calculator calculator;
 	private JLabel calculation;
 
 	public void buttonPressed(ActionEvent e)
 	{
+		if(e.getSource() == buttonClear)
+		{
+			this.calculator.clearCalculator();
+		}
+		
 		if (e.getSource() == buttonEqual)
 		{
 			this.calculator.inputDoneToTrue();
@@ -91,7 +98,6 @@ public class MyJFrame extends JFrame
 			{
 				this.calculator.concatSecondNumber("0");
 			}
-			this.calculator.printCalculation();
 		}
 		else if (e.getSource() == button1)
 		{
@@ -103,7 +109,6 @@ public class MyJFrame extends JFrame
 			{
 				this.calculator.concatSecondNumber("1");
 			}
-			this.calculator.printCalculation();
 		}
 		else if (e.getSource() == button2)
 		{
@@ -115,7 +120,6 @@ public class MyJFrame extends JFrame
 			{
 				this.calculator.concatSecondNumber("2");
 			}
-			this.calculator.printCalculation();
 		}
 		else if (e.getSource() == button3)
 		{
@@ -127,7 +131,6 @@ public class MyJFrame extends JFrame
 			{
 				this.calculator.concatSecondNumber("3");
 			}
-			this.calculator.printCalculation();
 		}
 		else if (e.getSource() == button4)
 		{
@@ -139,7 +142,6 @@ public class MyJFrame extends JFrame
 			{
 				this.calculator.concatSecondNumber("4");
 			}
-			this.calculator.printCalculation();
 		}
 		else if (e.getSource() == button5)
 		{
@@ -151,7 +153,6 @@ public class MyJFrame extends JFrame
 			{
 				this.calculator.concatSecondNumber("5");
 			}
-			this.calculator.printCalculation();
 		}
 		else if (e.getSource() == button6)
 		{
@@ -163,7 +164,6 @@ public class MyJFrame extends JFrame
 			{
 				this.calculator.concatSecondNumber("6");
 			}
-			this.calculator.printCalculation();
 		}
 		else if (e.getSource() == button7)
 		{
@@ -175,7 +175,6 @@ public class MyJFrame extends JFrame
 			{
 				this.calculator.concatSecondNumber("7");
 			}
-			this.calculator.printCalculation();
 		}
 		else if (e.getSource() == button8)
 		{
@@ -187,7 +186,6 @@ public class MyJFrame extends JFrame
 			{
 				this.calculator.concatSecondNumber("8");
 			}
-			this.calculator.printCalculation();
 		}
 		else if (e.getSource() == button9)
 		{
@@ -199,8 +197,8 @@ public class MyJFrame extends JFrame
 			{
 				this.calculator.concatSecondNumber("9");
 			}
-			this.calculator.printCalculation();
 		}
+		this.calculation.setText(this.calculator.getFirstNumber() + " " + this.calculator.getOperator() + " " + this.calculator.getSecondNumber());
 	}
 	
 	private void initButtons(MyListener listener)
@@ -279,7 +277,7 @@ public class MyJFrame extends JFrame
 		this.addButtonsToPanel(buttonsPanel);
 
 		this.calculation = new JLabel("Click on the buttons to start calculating !");
-		this.add(calculation);
+		buttonsPanel.add(calculation);
 		this.add(buttonsPanel);
 		this.setVisible(true);
 	}
