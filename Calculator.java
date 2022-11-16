@@ -9,16 +9,13 @@ public class Calculator
 	
 	private String operator;
 	
-	private boolean inputDone;
-	
 	public Calculator()
 	{
 		this.firstNumber = "";
 		this.secondNumber = "";
 		this.operator = "";
-		this.inputDone = false;
 	}
-
+	
 	public String getFirstNumber()
 	{
 		return this.firstNumber;
@@ -48,18 +45,35 @@ public class Calculator
 	{
 		this.secondNumber = this.secondNumber.concat(n);
 	}
-	
-	public void inputDoneToTrue()
-	{
-		this.inputDone = true;
-	}
-	
+		
 	public void clearCalculator()
 	{
 		this.firstNumber = "";
 		this.secondNumber = "";
 		this.operator = "";
-		this.inputDone = false;
+	}
+	
+	public void calculatingResult(MyJFrame frame)
+	{
+		int result = 0;
+		switch(this.operator)
+		{
+			case "+":
+				result = Integer.parseInt(this.firstNumber) + Integer.parseInt(this.secondNumber);
+				break;
+			case "-":
+				result = Integer.parseInt(this.firstNumber) - Integer.parseInt(this.secondNumber);
+				break;
+			case "*":
+				result = Integer.parseInt(this.firstNumber) * Integer.parseInt(this.secondNumber);
+				break;
+			case "/":
+				result = Integer.parseInt(this.firstNumber) / Integer.parseInt(this.secondNumber);
+				break;
+			default:
+				break;
+		}
+		frame.printResult(Integer.toString(result));
 	}
 	
 	public static void main(String []args) throws InterruptedException
@@ -67,35 +81,7 @@ public class Calculator
 		Calculator c = new Calculator();
 		MyJFrame frame = new MyJFrame(c);
 		int result = 0;
-		while(true)
-		{
-			while(!c.inputDone)
-			{
-				// wait for complete input
-				System.out.println();
-			}
-						
-			switch(c.operator)
-			{
-				case "+":
-					result = Integer.parseInt(c.firstNumber) + Integer.parseInt(c.secondNumber);
-					frame.printResult(c.firstNumber + " + " + c.secondNumber + " = " + Integer.toString(result));
-					break;
-				case "-":
-					result = Integer.parseInt(c.firstNumber) - Integer.parseInt(c.secondNumber);
-					frame.printResult(c.firstNumber + " - " + c.secondNumber + " = " + Integer.toString(result));
-					break;
-				case "*":
-					result = Integer.parseInt(c.firstNumber) * Integer.parseInt(c.secondNumber);
-					frame.printResult(c.firstNumber + " * " + c.secondNumber + " = " + Integer.toString(result));
-					break;
-				case "/":
-					result = Integer.parseInt(c.firstNumber) / Integer.parseInt(c.secondNumber);
-					frame.printResult(c.firstNumber + " / " + c.secondNumber + " = " + Integer.toString(result));
-					break;
-				default:
-					break;
-			}
-		}
+		int count = 0;
+		while(true){}
 	}
 }

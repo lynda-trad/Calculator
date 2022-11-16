@@ -1,6 +1,8 @@
 package calculator;
 
 import java.awt.BorderLayout;
+import java.awt.Color;
+import java.awt.Window;
 import java.awt.event.ActionEvent;
 
 import javax.swing.JButton;
@@ -30,7 +32,8 @@ public class MyJFrame extends JFrame
 	
 	private Calculator calculator;
 	private JLabel calculation;
-
+	private JLabel resultLabel;
+	
 	public void buttonPressed(ActionEvent e)
 	{
 		if(e.getSource() == buttonClear)
@@ -40,7 +43,7 @@ public class MyJFrame extends JFrame
 		
 		if (e.getSource() == buttonEqual)
 		{
-			this.calculator.inputDoneToTrue();
+			this.calculator.calculatingResult(this);
 		}
 		else if (e.getSource() == buttonPlus)
 		{
@@ -50,7 +53,7 @@ public class MyJFrame extends JFrame
 			}
 			else
 			{
-				System.out.println("You already chose " + this.calculator.getOperator() + " as your operator.");
+				this.resultLabel.setText("You already chose " + this.calculator.getOperator() + " as your operator.");
 			}
 		}
 		else if (e.getSource() == buttonMinus)
@@ -61,7 +64,7 @@ public class MyJFrame extends JFrame
 			}
 			else
 			{
-				System.out.println("You already chose " + this.calculator.getOperator() + " as your operator.");
+				this.resultLabel.setText("You already chose " + this.calculator.getOperator() + " as your operator.");
 			}
 		}
 		else if (e.getSource() == buttonTimes)
@@ -72,7 +75,7 @@ public class MyJFrame extends JFrame
 			}
 			else
 			{
-				System.out.println("You already chose " + this.calculator.getOperator() + " as your operator.");
+				this.resultLabel.setText("You already chose " + this.calculator.getOperator() + " as your operator.");
 			}
 		}
 		else if (e.getSource() == buttonDivide)
@@ -83,7 +86,7 @@ public class MyJFrame extends JFrame
 			}
 			else
 			{
-				System.out.println("You already chose " + this.calculator.getOperator() + " as your operator.");
+				this.resultLabel.setText("You already chose " + this.calculator.getOperator() + " as your operator.");
 			}
 		}
 		
@@ -265,8 +268,9 @@ public class MyJFrame extends JFrame
 	
 	public void printResult(String result)
 	{
-		this.calculation.setText(result);
+		this.resultLabel.setText(result);
 	}
+	
 	public MyJFrame(Calculator c)
 	{
 		this.calculator = c;
@@ -274,7 +278,7 @@ public class MyJFrame extends JFrame
 		this.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		this.setLocation(0, 0);
 		this.setLocationRelativeTo(null);
-		this.setSize(465, 485);
+		this.setSize(450, 150);
 		this.setResizable(false);
 	
 		MyListener listener = new MyListener(this);
@@ -285,11 +289,18 @@ public class MyJFrame extends JFrame
 		
 		this.addButtonsToPanel(buttonsPanel);
 		
+		JPanel calculationPanel = new JPanel();
 		this.calculation = new JLabel("Click on the buttons to start calculating !");
-		buttonsPanel.add(calculation, BorderLayout.SOUTH);
+		calculationPanel.add(calculation, BorderLayout.SOUTH);
 		
+		this.resultLabel = new JLabel();
+		this.resultLabel.setBackground(Color.BLUE);
+		this.resultLabel.setSize(100, 100);
+		
+		this.add(this.calculation, BorderLayout.PAGE_START);
 		this.add(buttonsPanel, BorderLayout.CENTER);
-
+		this.add(this.resultLabel, BorderLayout.PAGE_END);
+		
 		this.setVisible(true);
 	}
 }
