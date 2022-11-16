@@ -19,14 +19,24 @@ public class Calculator
 		this.inputDone = false;
 	}
 
-	public void setOperator(String o)
+	public String getFirstNumber()
 	{
-		this.operator = o;
+		return this.firstNumber;
+	}
+	
+	public String getSecondNumber()
+	{
+		return this.secondNumber;
 	}
 	
 	public String getOperator()
 	{
 		return this.operator;
+	}
+	
+	public void setOperator(String o)
+	{
+		this.operator = o;
 	}
 	
 	public void concatFirstNumber(String n)
@@ -44,9 +54,12 @@ public class Calculator
 		this.inputDone = true;
 	}
 	
-	public void printCalculation()
+	public void clearCalculator()
 	{
-		System.out.println(this.firstNumber + " " + this.operator + " " + this.secondNumber);
+		this.firstNumber = "";
+		this.secondNumber = "";
+		this.operator = "";
+		this.inputDone = false;
 	}
 	
 	public static void main(String []args) throws InterruptedException
@@ -54,29 +67,34 @@ public class Calculator
 		Calculator c = new Calculator();
 		JFrame frame = new MyJFrame(c);
 		int result = 0;
-		
-		while(!c.inputDone)
+		while(true)
 		{
-			// wait for input
+			while(!c.inputDone)
+			{
+				// wait for complete input
+			}
+			
+			switch(c.operator)
+			{
+				case "+":
+					result = Integer.parseInt(c.firstNumber) + Integer.parseInt(c.secondNumber);
+					System.out.println(c.firstNumber + " + " + c.secondNumber + " = " + result);
+					break;
+				case "-":
+					result = Integer.parseInt(c.firstNumber) - Integer.parseInt(c.secondNumber);
+					System.out.println(c.firstNumber + " - " + c.secondNumber + " = " + result);
+					break;
+				case "*":
+					result = Integer.parseInt(c.firstNumber) * Integer.parseInt(c.secondNumber);
+					System.out.println(c.firstNumber + " * " + c.secondNumber + " = " + result);
+					break;
+				case "/":
+					result = Integer.parseInt(c.firstNumber) / Integer.parseInt(c.secondNumber);
+					System.out.println(c.firstNumber + " / " + c.secondNumber + " = " + result);
+					break;
+				default:
+					System.exit(0);
+			}
 		}
-		
-		switch(c.operator)
-		{
-			case "+":
-				result = Integer.parseInt(c.firstNumber) + Integer.parseInt(c.secondNumber);
-				System.out.println(c.firstNumber + " + " + c.secondNumber + " = " + result);
-			case "-":
-				result = Integer.parseInt(c.firstNumber) - Integer.parseInt(c.secondNumber);
-				System.out.println(c.firstNumber + " - " + c.secondNumber + " = " + result);
-			case "*":
-				result = Integer.parseInt(c.firstNumber) * Integer.parseInt(c.secondNumber);
-				System.out.println(c.firstNumber + " * " + c.secondNumber + " = " + result);
-			case "/":
-				result = Integer.parseInt(c.firstNumber) / Integer.parseInt(c.secondNumber);
-				System.out.println(c.firstNumber + " / " + c.secondNumber + " = " + result);
-			default:
-				System.exit(0);
-		}
-		System.exit(0);
 	}
 }
