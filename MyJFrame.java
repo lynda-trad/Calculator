@@ -30,6 +30,8 @@ public class MyJFrame extends JFrame
 	private JButton buttonEqual;
 	private JButton buttonClear;
 	
+	private JButton buttons[];
+	
 	private Calculator calculator;
 	private JLabel calculation;
 	private JLabel resultLabel;
@@ -225,49 +227,40 @@ public class MyJFrame extends JFrame
 		
 		this.buttonClear = new JButton ("CLEAR");
 		
-		button0.addActionListener(listener);
-		button1.addActionListener(listener);
-		button2.addActionListener(listener);
-		button3.addActionListener(listener);
-		button4.addActionListener(listener);
-		button5.addActionListener(listener);
-		button6.addActionListener(listener);
-		button7.addActionListener(listener);
-		button8.addActionListener(listener);
-		button9.addActionListener(listener);
+		this.buttons = new JButton[]
+		{
+				this.button1,
+				this.button2,
+				this.button3,
+				this.buttonPlus,
+				this.button4,
+				this.button5,
+				this.button6,
+				this.buttonMinus,
+				this.button7,
+				this.button8,
+				this.button9,
+				this.buttonTimes,
+				this.button0,
+				this.buttonDivide,
+				this.buttonEqual,
+				this.buttonClear
+		};
 		
-		buttonPlus.addActionListener(listener);
-		buttonMinus.addActionListener(listener);
-		buttonTimes.addActionListener(listener);
-		buttonDivide.addActionListener(listener);
-		buttonEqual.addActionListener(listener);
-		buttonClear.addActionListener(listener);
+		for(int i = 0; i < this.buttons.length; i++)
+		{
+			this.buttons[i].addActionListener(listener);
+			this.buttons[i].setBackground(Color.LIGHT_GRAY);
+			this.buttons[i].setForeground(Color.BLACK);
+		}
 	}
 	
 	private void addButtonsToPanel(JPanel panel)
 	{
-		panel.add(button1);
-		panel.add(button2);
-		panel.add(button3);
-		
-		panel.add(buttonPlus);
-		
-		panel.add(button4);
-		panel.add(button5);
-		panel.add(button6);
-		
-		panel.add(buttonMinus);
-		
-		panel.add(button7);
-		panel.add(button8);
-		panel.add(button9);
-		
-		panel.add(buttonTimes);
-		panel.add(button0);
-		panel.add(buttonDivide);
-		panel.add(buttonEqual);
-
-		panel.add(buttonClear);
+		for(int i = 0; i < this.buttons.length; i++)
+		{
+			panel.add(this.buttons[i]);
+		}
 	}
 	
 	public void printResult(String result)
@@ -294,11 +287,10 @@ public class MyJFrame extends JFrame
 		this.addButtonsToPanel(buttonsPanel);
 		
 		JPanel calculationPanel = new JPanel();
-		this.calculation = new JLabel("Click on the buttons to start !");
+		this.calculation = new JLabel("Click on the buttons to start !", JLabel.CENTER);
 		calculationPanel.add(calculation, BorderLayout.SOUTH);
 		
-		this.resultLabel = new JLabel();
-		this.resultLabel.setBackground(Color.BLUE);
+		this.resultLabel = new JLabel(" ", JLabel.CENTER);
 		this.resultLabel.setSize(100, 100);
 		
 		this.add(this.calculation, BorderLayout.PAGE_START);
