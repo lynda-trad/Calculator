@@ -53,7 +53,7 @@ public class MyJFrame extends JFrame
 			}
 			else
 			{
-				this.resultLabel.setText("You already chose " + this.calculator.getOperator() + " as your operator.");
+				this.resultLabel.setText("\" " + this.calculator.getOperator() + " \"" + " was already chosen.");
 			}
 		}
 		else if (e.getSource() == buttonMinus)
@@ -64,7 +64,7 @@ public class MyJFrame extends JFrame
 			}
 			else
 			{
-				this.resultLabel.setText("You already chose " + this.calculator.getOperator() + " as your operator.");
+				this.resultLabel.setText("\" " + this.calculator.getOperator() + " \"" + " was already chosen.");
 			}
 		}
 		else if (e.getSource() == buttonTimes)
@@ -75,7 +75,7 @@ public class MyJFrame extends JFrame
 			}
 			else
 			{
-				this.resultLabel.setText("You already chose " + this.calculator.getOperator() + " as your operator.");
+				this.resultLabel.setText("\" " + this.calculator.getOperator() + " \"" + " was already chosen.");
 			}
 		}
 		else if (e.getSource() == buttonDivide)
@@ -86,7 +86,7 @@ public class MyJFrame extends JFrame
 			}
 			else
 			{
-				this.resultLabel.setText("You already chose " + this.calculator.getOperator() + " as your operator.");
+				this.resultLabel.setText("\" " + this.calculator.getOperator() + " \"" + " was already chosen.");
 			}
 		}
 		
@@ -246,23 +246,27 @@ public class MyJFrame extends JFrame
 	
 	private void addButtonsToPanel(JPanel panel)
 	{
-		panel.add(button0);
 		panel.add(button1);
 		panel.add(button2);
 		panel.add(button3);
+		
+		panel.add(buttonPlus);
+		
 		panel.add(button4);
 		panel.add(button5);
 		panel.add(button6);
+		
+		panel.add(buttonMinus);
+		
 		panel.add(button7);
 		panel.add(button8);
 		panel.add(button9);
 		
-		panel.add(buttonPlus);
-		panel.add(buttonMinus);
 		panel.add(buttonTimes);
+		panel.add(button0);
 		panel.add(buttonDivide);
 		panel.add(buttonEqual);
-		
+
 		panel.add(buttonClear);
 	}
 	
@@ -278,7 +282,7 @@ public class MyJFrame extends JFrame
 		this.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		this.setLocation(0, 0);
 		this.setLocationRelativeTo(null);
-		this.setSize(450, 150);
+		this.setSize(200, 350);
 		this.setResizable(false);
 	
 		MyListener listener = new MyListener(this);
@@ -290,7 +294,7 @@ public class MyJFrame extends JFrame
 		this.addButtonsToPanel(buttonsPanel);
 		
 		JPanel calculationPanel = new JPanel();
-		this.calculation = new JLabel("Click on the buttons to start calculating !");
+		this.calculation = new JLabel("Click on the buttons to start !");
 		calculationPanel.add(calculation, BorderLayout.SOUTH);
 		
 		this.resultLabel = new JLabel();
