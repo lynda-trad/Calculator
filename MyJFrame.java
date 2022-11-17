@@ -282,7 +282,7 @@ public class MyJFrame extends JFrame
 		this.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		this.setLocation(0, 0);
 		this.setLocationRelativeTo(null);
-		this.setSize(200, 250);
+		this.setSize(200, 230);
 		this.setResizable(false);
 	
 		MyListener listener = new MyListener(this);
